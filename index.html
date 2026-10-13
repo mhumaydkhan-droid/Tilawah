@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tilawah</title>
+<meta name="theme-color" content="#E6E9EC">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tilawah">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<style>
+:root{--bg:#E6E9EC;--card:#F6F7F9;--ink:#2B353C;--mute:#6F7C84;--line:#D0D6DB;--green:#2F855A;--green-soft:#DDF3E6;--gold:#E0A600;--gold-soft:#FFF1C2;--gold-ink:#6B4E00}
+@media(prefers-color-scheme:dark){:root{--bg:#22272B;--card:#2C3237;--ink:#E4E8EB;--mute:#9AA4AB;--line:#3A4348;--green:#3CC47A;--green-soft:#173A29;--gold:#F5C518;--gold-soft:#3B3210;--gold-ink:#F5DE8A}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);-webkit-tap-highlight-color:transparent}
+main{max-width:520px;margin:0 auto;padding:12px 12px calc(28px + env(safe-area-inset-bottom))}
+button{font:inherit;cursor:pointer;touch-action:manipulation}
+h1{font-size:1.5rem;margin:0}h2{font-size:1.02rem;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:12px}
+.hero{margin-top:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sub{font-size:.82rem;color:var(--mute)}
+.kh{text-align:center;background:var(--gold-soft);border:1.5px solid var(--gold);border-radius:14px;padding:6px 14px;color:var(--gold-ink)}
+.kh b{display:block;font-size:1.4rem;line-height:1.1}.kh span{font-size:.7rem;font-weight:700}
+.bar{height:10px;border-radius:6px;background:var(--line);overflow:hidden;margin:14px 0 6px}
+.bar i{display:block;height:100%;width:0;background:var(--green);border-radius:6px;transition:width .25s}
+.ptext{font-size:.9rem;color:var(--mute)}.ptext b{color:var(--ink)}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.pill{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:7px 12px;font-size:.85rem;font-weight:700}
+.datebar{display:grid;grid-template-columns:46px minmax(0,1fr) 46px;gap:8px}
+.arr{height:46px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-size:1.5rem;line-height:1;padding:0}
+.arr:disabled{opacity:.35}
+input[type=date]{display:block;width:100%;min-width:0;height:46px;padding:0 10px;text-align:center;font:700 1rem system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;-webkit-appearance:none;appearance:none}
+input[type=date]::-webkit-date-and-time-value{text-align:center}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.j{aspect-ratio:1/1.08;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0;transition:transform .1s,background .2s}
+.j:active{transform:scale(.94)}
+.j b{font-size:1.1rem}.j small{font-size:.62rem;color:var(--mute);min-height:.8em}
+.j.on{background:var(--green-soft);border-color:var(--green)}.j.on b{color:var(--green)}
+.next{display:flex;align-items:center;gap:12px}
+.nj{min-width:52px;height:52px;border-radius:14px;background:var(--gold-soft);border:1.5px solid var(--gold);color:var(--gold-ink);display:grid;place-items:center;font-weight:800;font-size:1.25rem}
+.row{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.row:last-child{border:0}.row span:last-child{color:var(--mute)}
+.empty{color:var(--mute);font-size:.9rem;margin:4px 0}
+.done{background:var(--green-soft);border-color:var(--green)}
+.done p{margin:6px 0 12px;color:var(--mute);font-size:.9rem}
+.big{width:100%;height:46px;border:0;border-radius:12px;background:var(--green);color:#fff;font-weight:800;font-size:1rem}
+.danger{display:block;margin:18px auto 0;background:none;border:0;color:var(--mute);font-size:.8rem;text-decoration:underline}
+.jr{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}.jr:last-child{border:0}
+.jn{width:36px;height:36px;border-radius:12px;background:var(--bg);border:1.5px solid var(--line);display:grid;place-items:center;font-weight:800;flex:none}
+.jn.on{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.jt{flex:1;min-width:0}.jname{font-weight:700;font-size:.88rem;line-height:1.2}.jd{font-size:.74rem;color:var(--mute)}
+.tg{flex:none;width:66px;height:40px;border-radius:12px;border:1.5px solid var(--line);background:transparent;font-weight:700;font-size:.74rem;padding:0}
+.tg.read{border-color:var(--green);color:var(--green)}.tg.read.on{background:var(--green);color:#fff}
+.tg.suj{border-color:var(--gold);color:var(--gold-ink)}.tg.suj.on{background:var(--gold);color:#2B2100}
+.tg:disabled{opacity:.35;border-color:var(--line);color:var(--mute)}
+.j{position:relative}
+.dots{position:absolute;top:6px;right:6px;display:flex;gap:3px}
+.dt{width:7px;height:7px;border-radius:50%;border:1.5px solid var(--gold)}.dt.on{background:var(--gold)}
+.slots{display:flex;gap:6px}.slots .tg{width:auto;min-width:64px;padding:0 8px;white-space:nowrap}
+[hidden]{display:none!important}
+button:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head>
+<body><main>
+<header class="card hero">
+  <div class="top"><div><h1>Tilawah</h1><div class="sub">Quran reading tracker</div></div>
+  <div class="kh"><b id="kc">0</b><span>KHATAMS</span></div></div>
+  <div class="bar"><i id="fill"></i></div>
+  <div class="ptext"><b id="pd">0 / 30</b> juz read &middot; <b id="ps">0 / 14</b> sujood done</div>
+</header>
+<section class="card done" id="donecard" hidden>
+  <h2>Khatam complete</h2><p>You have read all 30 juz. Start a new round whenever you are ready.</p>
+  <button class="big" id="newround">Start new round</button>
+</section>
+<section class="card">
+  <div class="head"><h2>Reading date</h2><button class="pill" id="today">Today</button></div>
+  <div class="datebar"><button class="arr" id="prev" aria-label="Previous day">&#8249;</button><input type="date" id="dp" aria-label="Reading date"><button class="arr" id="next" aria-label="Next day">&#8250;</button></div>
+</section>
+<section class="card"><div class="head"><h2>Juz</h2><span class="sub">Tap to mark read</span></div><div class="grid" id="grid"></div></section>
+<section class="card" id="nextcard"><div class="next"><div class="nj" id="nn">1</div><div><div class="sub">Next up</div><b id="nname"></b></div></div></section>
+<section class="card"><div class="head"><h2>Sujood</h2><span class="sub">Hanafi: 14 sajdahs</span></div><div id="sujlist"></div></section>
+<section class="card"><h2>Recent reading</h2><div id="recent"></div></section>
+<section class="card" id="pastcard" hidden><h2>Past khatams</h2><div id="past"></div></section>
+<button class="danger" id="reset">Erase all data</button>
+</main>
+<script>
+(function(){
+var NAMES=["Alif Lam Meem","Sayaqool","Tilkal Rusul","Lan Tanaloo","Wal Muhsanat","La Yuhibbullah","Wa Iza Samiu","Wa Lau Annana","Qalal Mala","Wa A'lamu","Ya'tazeroon","Wa Ma Min Dabbah","Wa Ma Ubarri'u","Rubama","Subhanalladhi","Qal Alam","Iqtaraba","Qad Aflaha","Wa Qalalladhina","A'man Khalaq","Utlu Ma Oohiya","Wa Man Yaqnut","Wa Mali","Faman Azlam","Ilayhi Yuraddu","Ha Meem","Qala Fama Khatbukum","Qad Sami Allah","Tabarakalladhi","Amma"];
+var KEY="tilawah-v1";
+var SUJ={9:1,14:1,15:1,16:1,17:2,19:2,21:1,23:1,24:1,27:1,30:2};
+var SJ=Object.keys(SUJ).map(Number);
+var SEED=null;
+function blank(){return{marks:{},suj:{},done:[]}}
+function load(){try{var x=JSON.parse(localStorage.getItem(KEY));if(x&&x.marks&&x.done){if(!x.suj)x.suj={};for(var k in x.suj){if(x.suj[k]===true)x.suj[k]=[true];}return x;}}catch(e){}return SEED?JSON.parse(JSON.stringify(SEED)):blank();}
+var st=load();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
+function pad(n){return n<10?"0"+n:""+n}
+function iso(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+function parse(s){var m=s.split("-");return new Date(+m[0],+m[1]-1,+m[2])}
+function fmt(s){return parse(s).toLocaleDateString(undefined,{day:"numeric",month:"short"})}
+function fmtLong(s){return parse(s).toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short",year:"numeric"})}
+var T=iso(new Date()),sel=T;
+var $=function(id){return document.getElementById(id)};
+function sjDone(n){var a=st.suj[n]||[],c=0;for(var k=0;k<SUJ[n];k++)if(a[k])c++;return c}
+function render(){
+  var ks=Object.keys(st.marks),n=ks.length,sd=0;
+  SJ.forEach(function(x){sd+=sjDone(x)});
+  $("kc").textContent=st.done.length;
+  $("pd").textContent=n+" / 30";
+  $("ps").textContent=sd+" / 14";
+  $("fill").style.width=(n/30*100)+"%";
+  $("dp").value=sel;$("dp").max=T;$("next").disabled=sel>=T;
+  var g=$("grid");g.innerHTML="";
+  for(var i=1;i<=30;i++){
+    var b=document.createElement("button"),d=st.marks[i],dots="";
+    if(SUJ[i]){dots='<span class="dots">';var a=st.suj[i]||[];for(var k=0;k<SUJ[i];k++)dots+='<i class="dt'+(a[k]?' on':'')+'"></i>';dots+='</span>';}
+    b.className="j"+(d?" on":"");
+    b.setAttribute("aria-pressed",!!d);
+    b.setAttribute("aria-label","Juz "+i);
+    b.innerHTML="<b>"+i+"</b><small>"+(d?fmt(d):"")+"</small>"+dots;
+    (function(i){b.onclick=function(){if(st.marks[i]){delete st.marks[i];delete st.suj[i];}else st.marks[i]=sel;save();render();};})(i);
+    g.appendChild(b);
+  }
+  var L=$("sujlist");L.innerHTML="";
+  SJ.forEach(function(x){
+    var read=!!st.marks[x],a=st.suj[x]||[];
+    var row=document.createElement("div");row.className="jr";
+    row.innerHTML='<div class="jn'+(read?' on':'')+'">'+x+'</div><div class="jt"><div class="jname">'+NAMES[x-1]+'</div><div class="jd">'+(read?'Read '+fmt(st.marks[x]):'Not read yet')+'</div></div>';
+    var w=document.createElement("div");w.className="slots";
+    for(var k=0;k<SUJ[x];k++){
+      (function(k){
+        var bt=document.createElement("button"),on=!!a[k];
+        bt.className="tg suj"+(on?" on":"");
+        bt.textContent=(on?"\u2713 ":"")+(SUJ[x]>1?"Sujood "+(k+1):"Sujood");
+        bt.disabled=!read;bt.setAttribute("aria-pressed",on);
+        bt.onclick=function(){var arr=st.suj[x]||(st.suj[x]=[]);arr[k]=!arr[k];save();render();};
+        w.appendChild(bt);
+      })(k);
+    }
+    row.appendChild(w);L.appendChild(row);
+  });
+  var nx=0;for(i=1;i<=30;i++){if(!st.marks[i]){nx=i;break;}}
+  $("nextcard").hidden=!nx;
+  if(nx){$("nn").textContent=nx;$("nname").textContent="Juz "+nx+" \u00B7 "+NAMES[nx-1];}
+  $("donecard").hidden=n<30;
+  var arr2=ks.map(function(k){return{n:+k,d:st.marks[k]}}).sort(function(a,b){return a.d<b.d?1:a.d>b.d?-1:b.n-a.n}).slice(0,8);
+  $("recent").innerHTML=arr2.length?arr2.map(function(e){return'<div class="row"><span>Juz '+e.n+' \u00B7 '+NAMES[e.n-1]+'</span><span>'+fmt(e.d)+'</span></div>'}).join(""):'<p class="empty">Nothing logged yet. Tap a juz above after you read it.</p>';
+  $("pastcard").hidden=!st.done.length;
+  $("past").innerHTML=st.done.slice().reverse().map(function(r,i){return'<div class="row"><span>Khatam '+(st.done.length-i)+'</span><span>'+fmtLong(r.finished)+'</span></div>'}).join("");
+}
+function shift(n){var d=parse(sel);d.setDate(d.getDate()+n);var s=iso(d);if(s>T)return;sel=s;render();}
+$("prev").onclick=function(){shift(-1)};
+$("next").onclick=function(){shift(1)};
+$("today").onclick=function(){sel=T;render()};
+$("dp").addEventListener("click",function(){try{if(this.showPicker)this.showPicker();}catch(e){}});
+$("dp").addEventListener("change",function(){if(!this.value)return;sel=this.value>T?T:this.value;render();});
+$("newround").onclick=function(){
+  var last="";for(var k in st.marks){if(st.marks[k]>last)last=st.marks[k];}
+  st.done.push({finished:last||T});st.marks={};st.suj={};save();render();
+};
+$("reset").onclick=function(){if(!confirm("Erase all Tilawah data on this device?"))return;st=blank();save();render();};
+render();
+})();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script>
+</body></html>
